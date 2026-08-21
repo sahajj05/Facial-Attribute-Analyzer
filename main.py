@@ -18,6 +18,7 @@ app.add_middleware(
 )
 
 MODEL_PATH = os.path.join(os.path.dirname(__file__), "celeba_multitask.keras")
+
 model = tf.keras.models.load_model(MODEL_PATH)
 
 ATTRIBUTES = ['Male', 'Smiling', 'Eyeglasses', 'Young']
