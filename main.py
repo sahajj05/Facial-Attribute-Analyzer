@@ -44,9 +44,7 @@ async def predict(file: UploadFile = File(...)):
         val = predictions[i][0][0] if isinstance(predictions, list) else predictions[0][i]
         prob = float(val)
         
-        results[attr] = {
-            "prediction": "Yes" if prob > 0.5 else "No",
-            "confidence": round(prob * 100, 2)
-        }
+        # Modified: Only returning "Yes" or "No"
+        results[attr] = "Yes" if prob > 0.5 else "No"
         
     return results

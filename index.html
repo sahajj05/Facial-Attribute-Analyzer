@@ -388,14 +388,16 @@
 
       resultsPanel.innerHTML = entries.map(([key, value]) => {
         const label = key.replace(/_/g, ' ');
+        // Since the backend now returns purely a string ("Yes" or "No"), we only process that string.
+        // We added a fallback check here just in case an old dict format accidentally makes it through.
         const prediction = (value && typeof value === 'object') ? value.prediction : value;
-        const confidence = (value && typeof value === 'object') ? ` (${value.confidence}%)` : '';
         const isYes = String(prediction).toLowerCase() === 'yes';
 
+        // Display updated without the confidence variable appended
         return `
           <div class="large-result-box">
             <span class="large-result-label">${label}</span>
-            <span class="large-result-value ${isYes ? 'is-yes' : 'is-no'}">${prediction}${confidence}</span>
+            <span class="large-result-value ${isYes ? 'is-yes' : 'is-no'}">${prediction}</span>
           </div>
         `;
       }).join('');
