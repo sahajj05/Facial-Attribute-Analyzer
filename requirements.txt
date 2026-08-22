@@ -1,7 +1,6 @@
 fastapi
 uvicorn[standard]
 python-multipart
-keras>=3.0.0
-tensorflow-cpu
+tensorflow-cpu==2.16.1
 numpy
 pillow
